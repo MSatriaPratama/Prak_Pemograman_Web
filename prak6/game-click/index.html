@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Klik Tombol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Klik Tombol Game</h1>
+    <p>Klik tombol sebanyak mungkin dalam 10 detik!</p>
+    <button id="clickButton">Klik Saya!</button>
+    <p>Jumlah Klik: <span id="clickCount">0</span></p>
+    <p id="result"></p>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    let clickCount = 0;
+    let gameActive = false;
+
+    $('#clickButton').click(function() {
+        if (gameActive) {
+            clickCount++;
+            $('#clickCount').text(clickCount);
+        }
+    });
+
+    function startGame() {
+        gameActive = true;
+        clickCount = 0;
+        $('#clickCount').text(clickCount);
+        $('#result').text('');
+        setTimeout(function() {
+            gameActive = false;
+            $('#result').text('Waktu habis! Kamu mengklik sebanyak ' + clickCount + ' kali.');
+        }, 10000);
+    }
+
+    startGame();
+});
+
+    </script>
+</body>
+</html>
